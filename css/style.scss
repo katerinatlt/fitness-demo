@@ -1,0 +1,453 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600';
+
+// vars
+
+$green: #a2ca28;
+$red: #fd634e;
+$white: #fff;
+$dark-blue: #0d1119;
+$gray-blue: #8297a7;
+
+$content-width: 1180px;
+
+// mixins
+
+@mixin bkg($img) {
+  background-image: url($img);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// doc styles
+
+body {
+  font: {
+    family: 'Open Sans', sans-serif;
+    size: 14px;
+  }
+  background: #ccc;
+  margin: 0;
+  padding: 0;
+}
+
+%wrap {
+  width: $content-width;
+  margin: 0 auto;
+}
+
+%flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrap {
+  @extend %wrap;
+}
+
+/* header */
+
+header {
+  width: 100%;
+  min-width: $content-width;
+  height: 890px;
+  position: relative;
+  background: {
+    image: url('../img/header-bkg.jpg');
+    repeat: no-repeat;
+    size: cover;
+    position: center;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background:linear-gradient(178deg, transparent 50%, transparentize($red, 0.7) 0);
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 40px;
+  left: 5%;
+}
+
+.nav {
+  width: 45%;
+  position: absolute;
+  top: 60px;
+  right: 5%;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  li {
+    a {
+      color: $white;
+      font-weight: 600;
+      text: {
+        decoration: none;
+        transform: uppercase;
+      }
+    }
+  }
+}
+
+.tagline {
+  position: absolute;
+  left: 10%;
+  bottom: 150px;
+  color: $white;
+  text: {
+    transform: uppercase;
+    align: right;
+  }
+  span {
+    display: block;
+    &:nth-child(1) {
+      font-size: 40px;
+      &::after {
+        color: $green;
+      }
+    }
+    &:nth-child(2) {
+      font-size: 20px;
+      margin-right: 50px;
+      &::after {
+        color: $red;
+      }
+    }
+    &::after {
+      content: '/';
+      position: absolute;
+      margin-left: 5px;
+    }
+  }
+}
+
+.green-block {
+  background: $green;
+  padding-top: 100px;
+}
+
+.red-block {
+  background: $red;
+}
+
+/* features */
+
+.features {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 100px;
+  position: relative;
+  @extend %wrap;
+  .features-item {
+    width: 22%;
+    &:not(:first-child) {
+      margin-left: 4%;
+    }
+    .icon {
+      width: 46px;
+      height: 46px;
+      margin-bottom: 10px;
+    }
+  }
+  h1 {
+    color: $dark-blue;
+    font-size: 24px;
+    margin: 0;
+  }
+  %font-size {
+    font-size: 13px;
+  }
+  p {
+    @extend %font-size;
+    color: #8297a7;
+    line-height: 25px;
+    margin: 20px 0 40px;
+  }
+  a {
+    @extend %font-size;
+    color: #00aeef;
+    position: absolute;
+    bottom: 0;
+    text-decoration: none;
+  }
+}
+
+/* tiles */
+
+.tiles {
+  @extend %wrap;
+  @extend %flex-wrap;
+  .green-block & > div {
+    height: 394px;
+  }
+  .red-block & > div {
+    height: 330px;
+  }
+}
+
+$tile-narrow: 35%;
+$tile-wide: 65%;
+
+%text-block {
+  background: $white;
+  width: $tile-narrow;
+  padding: 40px 50px;
+  box-sizing: border-box;
+  text-align: center;
+  h2 {
+    text-transform: uppercase;
+    font-size: 15px;
+    color: $red;
+    position: relative;
+    margin: 15px 0 60px 0;
+    span {
+      display: block;
+      color: $green;
+      font: {
+        size: 33px;
+        weight: 200;
+      }
+    }
+    &::after {
+      content: '';
+      background: url('../img/gray-drop.svg') no-repeat;
+      width: 16px;
+      height: 24px;
+      position: absolute;
+      margin-left: -8px;
+      bottom: -40px;
+    }
+  }
+  p {
+    color: #656e74;
+    line-height: 25px;
+  }
+  a {
+    color: $green;
+  }
+}
+
+%bkg-block {
+  width: $tile-wide;
+  position: relative;
+  background: {
+    repeat: no-repeat;
+    size: cover;
+  }
+  h3 {
+    color: $red;
+    padding-right: 33px;
+    position: absolute;
+    top: 80%;
+    font: {
+      size: 13px;
+      weight: 400;
+    }
+    span {
+      color: $white;
+    }
+    &::after {
+      content: '';
+      background: url('../img/red-drop.svg') no-repeat;
+      width: 19px;
+      height: 31px;
+      position: absolute;
+      top: -8px;
+      right: 0;
+    }
+  }
+}
+
+.fitness-first {
+  @extend %text-block;
+}
+
+.active-users {
+  @extend %bkg-block;
+  background-image: url('../img/tile_bkg_01.jpg');
+  h3 {
+    right: 8%;
+  }
+}
+
+.products-used {
+  @extend %bkg-block;
+  background-image: url('../img/tile_bkg_02.jpg');
+  h3 {
+    left: 8%;
+  }
+}
+
+.your-body {
+  @extend %text-block;
+}
+
+.track-lifestyle {
+  @extend %text-block;
+}
+
+.summer-of-fun {
+  width: $tile-wide;
+  box-sizing: border-box;
+  padding: 0 3%;
+  background: $green;
+  color: $white;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  h2 {
+    margin: 8% 0 10px;
+    text-transform: uppercase;
+    font: {
+      size: 40px;
+      weight: 300;
+    }
+  }
+  p {
+    font-size: 13px;
+  }
+}
+
+/* banner */
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 700px;
+  color: $white;
+  @include bkg('../img/banner-bkg.jpg');
+  background-position: center;
+  h1 {
+    font: {
+      size: 45px;
+      weight: 400;
+    }
+  }
+  p {
+    font-size: 16px;
+    text-align: center;
+  }
+  &%banner-style {
+    content: '';
+    position: absolute;
+    bottom: 0;
+  }
+  @mixin banner-style($side, $width, $height, $deg){
+    @extend %banner-style;
+    #{$side}: 0;
+    width: $width;
+    height: $height;
+    background:linear-gradient($deg+deg, transparent 50%, $dark-blue 0);
+  }
+  &::before {
+    @include banner-style('right', 50%, 75px, 178);
+  }
+  &::after {
+    @include banner-style('left', 100%, 100px, -178);
+  }
+}
+
+/* footer */
+
+footer {
+  background: $dark-blue;
+  padding: 20px 0 100px;
+  .wrap {
+    @extend %flex-wrap;
+    justify-content: space-between;
+  }
+  .col {
+    @extend %flex-wrap;
+    justify-content: space-between;
+    width: 65%;
+  }
+  h4 {
+    color: $white;
+    font: {
+      size: 16px;
+      weight: 400;
+    }
+  }
+  p {
+    color: $gray-blue;
+    line-height: 25px;
+  }
+}
+
+.resources {
+  width: 30%;
+}
+
+.about {
+  width: 65%;
+}
+
+.social {
+  width: 32%;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+    li {
+      a {
+        color: $white;
+        font-size: 20px;
+        display: block;
+        i {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 48px;
+          &:hover {
+            box-shadow: inset 0 0 5px black;
+          }
+          $social: (
+            facebook: #2e3192,
+            twitter: #00aeef,
+            youtube-play: #ed3123,
+            linkedin: #171a8f
+          );
+          @each $name, $color in $social { // цикл прохождения ключ-значение
+            &[class$=#{$name}] {
+              background: $color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.subs {
+  display: flex;
+  margin-top: 20px;
+  %field-style {
+    padding: 13px 20px 15px;
+    border-radius: 3px;
+    border: 0;
+    height: 50px;
+    box-sizing: border-box;
+    margin-right: 5px;
+    font-size: 16px;
+  }
+  input[type="text"] {
+    @extend %field-style;
+  }
+  input[type="email"] {
+    @extend %field-style;
+  }
+  button {
+    @extend %field-style;
+    color: $white;
+    background: $green;
+  }
+}
