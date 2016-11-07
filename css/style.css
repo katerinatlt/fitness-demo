@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600";
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600';
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
@@ -11,7 +11,9 @@ body {
   margin: 0 auto; }
 
 .tiles, footer .wrap, footer .col {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap; }
 
 /* header */
@@ -44,7 +46,9 @@ header {
   right: 5%;
   padding: 0;
   list-style-type: none;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: justify;
   justify-content: space-between; }
   .nav li a {
     color: #fff;
@@ -84,7 +88,9 @@ header {
 
 /* features */
 .features {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 100px;
   position: relative; }
@@ -115,6 +121,7 @@ header {
 /* tiles */
 .green-block .tiles > div {
   height: 394px; }
+
 .red-block .tiles > div {
   height: 330px; }
 
@@ -201,9 +208,13 @@ header {
 
 /* banner */
 .banner {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
   align-items: center;
   position: relative;
   height: 700px;
@@ -238,8 +249,10 @@ footer {
   background: #0d1119;
   padding: 20px 0 100px; }
   footer .wrap {
+    -ms-flex-pack: justify;
     justify-content: space-between; }
   footer .col {
+    -ms-flex-pack: justify;
     justify-content: space-between;
     width: 65%; }
   footer h4 {
@@ -259,7 +272,9 @@ footer {
 .social {
   width: 32%; }
   .social ul {
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     list-style-type: none;
     padding: 0; }
@@ -285,6 +300,7 @@ footer {
           background: #171a8f; }
 
 .subs {
+  display: -ms-flexbox;
   display: flex;
   margin-top: 20px; }
   .subs input[type="text"], .subs input[type="email"], .subs button {
@@ -298,5 +314,3 @@ footer {
   .subs button {
     color: #fff;
     background: #a2ca28; }
-
-/*# sourceMappingURL=style.css.map */
